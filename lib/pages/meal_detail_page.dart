@@ -78,31 +78,32 @@ class MealDetailPage extends StatelessWidget {
               ),
             ),
             _createSectionTitle(context, 'Passos'),
-            _createSectionContainer(ListView.builder(
-              itemCount: meal.steps.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('${index +1 }'),
+            _createSectionContainer(
+              ListView.builder(
+                itemCount: meal.steps.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          child: Text('${index + 1}'),
+                        ),
+                        title: Text(meal.steps[index]),
                       ),
-                      title: Text(meal.steps[index]),
-                    ),
-                    const Divider(color: Colors.black,),
-                  ],
-                );
-              },
-            ))
-            // ElevatedButton(
-            //   onPressed: () {
-            //     print(sizeWidth);
-            //     print(sizeHeight);
-            //   },
-            //   child: Text('Botao'),
-            // ),
+                      const Divider(
+                        color: Colors.black,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.star),
+        onPressed: () {Navigator.of(context).pop(meal.title);},
       ),
     );
   }

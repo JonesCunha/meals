@@ -11,7 +11,13 @@ class MealItem extends StatelessWidget {
     Navigator.of(context).pushNamed(
       AppRoutes.MEAL_DETAIL_PAGE,
       arguments: meal
-    );
+    ).then((value) {
+      if(value==null){
+        print('O Resultado é nulo - Retorno sem o POP');
+      } else {
+        print('O Resultado é $value. Retorno com o POP');
+      }
+    });
   }
 
   @override
