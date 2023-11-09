@@ -10,7 +10,7 @@ class MainDrawer extends StatelessWidget {
     IconData icon,
     String label,
     BuildContext context,
-    int option,
+    Function() onTap,
   ) {
     return ListTile(
       leading: Icon(
@@ -25,9 +25,7 @@ class MainDrawer extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold),
       ),
-      onTap: option == 2 ? () => Navigator.of(context).pushReplacementNamed(AppRoutes.SETTINGS) : 
-                  () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => TabsPages(),))
-              ,
+      onTap: onTap,
     );
   }
 
@@ -38,7 +36,7 @@ class MainDrawer extends StatelessWidget {
         Container(
           height: 120,
           alignment: Alignment.center,
-          width: double.infinity,
+          // width: double.infinity,
           padding: const EdgeInsets.all(10),
           color: Theme.of(context).colorScheme.background,
           child: Column(
@@ -82,8 +80,8 @@ class MainDrawer extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        _createItem(Icons.restaurant, 'Refeições', context, 1),
-        _createItem(Icons.settings, 'Configurações', context, 2),
+        _createItem(Icons.restaurant, 'Refeições', context, () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => TabsPages(),))),
+        _createItem(Icons.settings, 'Configurações', context, () => Navigator.of(context).pushReplacementNamed(AppRoutes.SETTINGS)),
       ],
     );
   }
